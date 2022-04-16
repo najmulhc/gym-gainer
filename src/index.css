@@ -14,4 +14,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.text-komola{
+  color:#F15B27;
+}
+.bg-komola{
+  background-color:#F15B27;
+}
+.border-komola{
+  border-color:#F15B27;
+}
+.footer-bg{
+  background-color: #202020;
+}
