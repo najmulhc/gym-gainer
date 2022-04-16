@@ -1,13 +1,24 @@
-import logo from "./logo.svg";
 import "./App.css";
-import logoheader from "./img/logoheader.png";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { Route, Routes } from "react-router";
+import Home from "./components/Pages/Home/Home";
+import NotFound from "./components/Pages/NotFound/NotFound";
+import Blog from "./components/Pages/Blog/Blog";
+import Login from "./components/Pages/Login/Login";
+import CheckOut from "./components/Pages/CheckOut/CheckOut";
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <h1 className="mt-20">testing heading</h1>
+      <div className="w-full h-20"></div>
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/checkout" element={<CheckOut/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/blog" element={<Blog/>}></Route>
+        <Route path="*" element={<NotFound/>}></Route>
+      </Routes>
       <Footer></Footer>
     </div>
   );

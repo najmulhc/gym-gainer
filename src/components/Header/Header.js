@@ -24,11 +24,18 @@ const Header = () => {
             open ? "top-20" : "top-[-490px]"
           } text-choco`}
         >
-          <li className="md:ml-4 pl-4 md:my-0 my-4 ">
-            Home
+           
+          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+          <Link to='/'>Home</Link>
           </li>
-          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 ">
-          Meals
+          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+          <Link to='/blog'>Blog</Link>
+          </li>
+          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+          <Link to='/checkout'>Checkout</Link>
+          </li>
+          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+          <Link to='/login'>Login</Link>
           </li>
        
         </ul>

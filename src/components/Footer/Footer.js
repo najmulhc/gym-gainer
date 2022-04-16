@@ -25,7 +25,6 @@ const Footer = () => {
             <ul className="md:flex gap-7 items-center">
                 <li>Terms of condition</li>
                 <li>Privacy policy</li>
-                <li>Refund policy</li>
             </ul>
             <p className="text-white opacity-50 ">©GymGainer {year}. All rights reserved</p>
         </div>
