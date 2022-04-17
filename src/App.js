@@ -8,6 +8,7 @@ import Blog from "./components/Pages/Blog/Blog";
 import Login from "./components/Pages/Login/Login";
 import CheckOut from "./components/Pages/CheckOut/CheckOut";
 import Register from "./components/Pages/Register/Register";
+import RouteProtector from "./components/RouteProtector/RouteProtector";
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,7 @@ function App() {
       <div className="w-full h-20"></div>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/checkout" element={<CheckOut/>}></Route>
+        <Route path="/checkout" element={<RouteProtector><CheckOut/></RouteProtector>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/blog" element={<Blog/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
