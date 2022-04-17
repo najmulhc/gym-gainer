@@ -7,6 +7,7 @@ import NotFound from "./components/Pages/NotFound/NotFound";
 import Blog from "./components/Pages/Blog/Blog";
 import Login from "./components/Pages/Login/Login";
 import CheckOut from "./components/Pages/CheckOut/CheckOut";
+import Register from "./components/Pages/Register/Register";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
         <Route path="/checkout" element={<CheckOut/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/blog" element={<Blog/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
         <Route path="*" element={<NotFound/>}></Route>
       </Routes>
       <Footer></Footer>
