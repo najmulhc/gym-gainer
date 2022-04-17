@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Topbanner from './Topbanner';
 const Home = () => {
     return (
         <div>
-            <h1>This is home </h1>
+           <Topbanner/>
         </div>
     );
 };
