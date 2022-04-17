@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import {useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import {useCreateUserWithEmailAndPassword, useUpdateProfile} from "react-firebase-hooks/auth"
 import auth from "../../../firebase.init"
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router"
 const Register = () => {
     const [
         createUserWithEmailAndPassword,
@@ -11,29 +11,32 @@ const Register = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
     // declaring variablaes for auth
-    const [name, setName] = useState("");
+    const [displayName, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [regError, setRegError] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState(""); 
     const navigate = useNavigate();
+    const [updateProfile, updating, uerror] = useUpdateProfile(auth);
     // registration function 
-    const register = (e) => {
+    const  register = async(e) => {
         e.preventDefault();
-        console.log(name, email, password, confirmPassword);
-        if (password === confirmPassword) {
-            createUserWithEmailAndPassword(email, password);
-        } else {
-            setRegError("Passwords did not matched")
+        console.log("pressed");
+        if(password === confirmPassword){
+           await createUserWithEmailAndPassword(email, password);
+           await updateProfile({displayName});
+        } 
+        else{
+      
         }
+      
     }
     if(error){
-        let err = error.message;
-        setRegError(err);
+     console.log(error);
     }
     if(user){
-        navigate("/login");
+        navigate('/');
     }
+      
   return (
     <div className="bg-komola h-full w-full">
       <div className="container mx-auto flex items-center justify-center py-8 md:py-20">
@@ -43,31 +46,30 @@ const Register = () => {
             type="text"
             placeholder="Your Name"
             className="mt-4  border-0 border-b-2 border-komola bg-orange-500 bg-opacity-10 p-3 w-full"
-            onChange={(e) => setName(e.target.value)}
+            onBlur={(e) => setName(e.target.value)} required 
           />
           <input
             type="email"
             placeholder="Your Email "
             className="mt-4  border-0 border-b-2 border-komola p-3 w-full  bg-orange-500 bg-opacity-10" 
-            onChange={(e) => setEmail(e.target.value)}
+            onBlur={(e) => setEmail(e.target.value)} required
           />
           <input
             type="password"
             placeholder="Your Password "
             className="mt-4  border-0 border-b-2 border-komola p-3 w-full  bg-orange-500 bg-opacity-10"
-            onChange={(e) => setPassword(e.target.value)}
+            onBlur={(e) => setPassword(e.target.value)} required
           />
           <input
             type="password"
             placeholder="Confirm Password "
             className="mt-4  border-0 border-b-2 border-komola p-3 w-full  bg-orange-500 bg-opacity-10"
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onBlur={(e) => setConfirmPassword(e.target.value)} required
           />
 
           <button className="text-white p-2 bg-komola w-full mt-4 text-2xl " type="submit">
             Register
           </button>
-          <p className="text-red-700 block"> {regError}</p>
           <small className="text-grey">
             Already registered?
             <Link to="/login" className="text-komola">

@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import headerlogo from "../../img/logoheader.png";
-import auth from "../../firebase.init";
+import auth from "../../firebase.init"; 
+import { signOut } from "firebase/auth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  
+  const [user] = useAuthState(auth);
+  const logOut = e => {
+    signOut(auth);
+  }
   return (
     <header className="shadow-md w-full fixed top-0 left-0  bg-white z-50 ">
       <div className="md:flex items-center md:justify-between  container md:mx-auto  py-4 ">
@@ -24,20 +28,24 @@ const Header = () => {
             open ? "top-20" : "top-[-490px]"
           } text-choco`}
         >
-           
           <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
-          <Link to='/'>Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
-          <Link to='/blog'>Blog</Link>
+            <Link to="/blog">Blog</Link>
           </li>
           <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
-          <Link to='/checkout'>Checkout</Link>
+            <Link to="/checkout">Checkout</Link>
           </li>
-          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
-          <Link to='/login'>Login</Link>
-          </li>
-       
+          {user ? (
+            <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+              <Link to='/' onClick={logOut}>{user.displayName}(Log out)</Link>
+            </li>
+          ) : (
+            <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+              <Link to="/login">Login</Link>
+            </li>
+          )}
         </ul>
       </div>
     </header>

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
+import { useNavigate } from "react-router";
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate()
   const [
     signInWithEmailAndPassword,
     user,
@@ -20,7 +22,10 @@ const Login = () => {
       signInWithEmailAndPassword(loginEmail, loginPassword)
   }
   if(error){
-      setLoginError(error.message)
+     console.log(error.message);
+  }
+  if(user){ 
+      navigate('/')
   }
   return (
     <div className="bg-komola h-full w-full">
@@ -51,11 +56,10 @@ const Login = () => {
           >
             Login
           </button>
-          <small className="text-red-700 block">{loginError}</small>
           <small className="text-grey">
             New to Gymgainer?
             <Link to="/register" className="text-komola">
-              {" "}
+              
               Register here
             </Link>
           </small>
