@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { useNavigate } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -63,6 +64,7 @@ const Login = () => {
               Register here
             </Link>
           </small>
+          <SocialLogin/>
         </form>
       </div>
     </div>

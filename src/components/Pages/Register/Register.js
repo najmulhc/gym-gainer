@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import {useCreateUserWithEmailAndPassword, useUpdateProfile} from "react-firebase-hooks/auth"
 import auth from "../../../firebase.init"
 import { useNavigate } from "react-router"
+import SocialLogin from "../SocialLogin/SocialLogin"
 const Register = () => {
     const [
         createUserWithEmailAndPassword,
@@ -76,6 +77,7 @@ const Register = () => {
               Login here
             </Link>
           </small>
+          <SocialLogin/>
         </form>
       </div>
     </div>
