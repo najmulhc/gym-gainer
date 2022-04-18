@@ -1,5 +1,6 @@
 import React from "react";
 import trainer from "../../../img/trainer.png";
+import { Link } from "react-router-dom";
 import topbanner from "../../../img/topbanner.jpg";
 const Topbanner = () => {
   return (
@@ -11,8 +12,8 @@ const Topbanner = () => {
             <h1 className="text-5xl md:text-7xl font-bold text-white m-0 p-0 md:text-left">
               Get the best trainer for your muscle.
             </h1>
-            <button className="bg-komola text-white py-4 px-8 text-xl font-semibold mt-8  ">
-              View services
+            <button className="bg-komola text-white py-4 px-8 text-xl font-semibold mt-8 ">
+             <Link to='#service'> View services</Link>
             </button>
           </div>
           <div className="px-4 hidden md:block mx-auto md:mx-0">
