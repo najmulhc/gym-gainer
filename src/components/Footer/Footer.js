@@ -10,8 +10,8 @@ const Footer = () => {
         <div className="md:grid md:grid-cols-5">
           <img src={logo2} className="col-span-3 mx-auto md:mx-0 w-64" alt="" />
           <div className="mt-6 md:mt-0 md:text-left cursor-pointer">
-            <p className="text-white py-1">About our service</p>
-            <p className="text-white py-1">Read our blog </p>
+            <p className="text-white py-1">My achivements</p>
+            <p className="text-white py-1">Read my blog </p>
           </div>
           <div className="mt-6 md:mt-0 md:text-left cursor-pointer">
             <p className="text-white py-1">Get help</p>

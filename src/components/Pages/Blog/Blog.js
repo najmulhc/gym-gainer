@@ -21,7 +21,7 @@ const Blog = () => {
       <div className="my-8">
         {questions.map((ques) => {
           return (
-            <div className="">
+            <div className=" mb-12">
               <h2 className="text-2xl text-komola text-laft mt-2 font-bold">
                 {ques.ques}
               </h2>

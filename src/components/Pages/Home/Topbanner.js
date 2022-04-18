@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import topbanner from "../../../img/topbanner.jpg";
 const Topbanner = () => {
   return (
-    <div className="relative">
+    <section className="relative">
       <img src={topbanner} className="h-full " alt="" />
       <div className="bg-orange-600 bg-opacity-20 absolute top-0  w-full left-0 h-full">
         <div className="grid md:grid-cols-2 container gap-4 mx-auto h-full ">
@@ -21,7 +21,7 @@ const Topbanner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

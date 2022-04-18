@@ -2,20 +2,23 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import headerlogo from "../../img/logoheader.png";
-import auth from "../../firebase.init"; 
+import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [user] = useAuthState(auth);
-  const logOut = e => {
+  const logOut = (e) => {
     signOut(auth);
-  }
+  };
   return (
     <header className="shadow-md w-full fixed top-0 left-0  bg-white z-50 ">
       <div className="md:flex items-center md:justify-between  container md:mx-auto  py-4 ">
         <div className="flex  items-center">
-         <Link to="/"> <img src={headerlogo} className="h-12 pl-8 md:pl-0" alt="" /></Link>
+          <Link to="/">
+            {" "}
+            <img src={headerlogo} className="h-12 pl-8 md:pl-0" alt="" />
+          </Link>
         </div>
         <div
           className="text-3xl  absolute right-8 top-6 cursor-pointer text-choco md:hidden "
@@ -37,9 +40,14 @@ const Header = () => {
           <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
             <Link to="/checkout">Checkout</Link>
           </li>
+          <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
+            <Link to="/about">About me</Link>
+          </li>
           {user ? (
             <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
-              <Link to='/' onClick={logOut}>{user.displayName}(Log out)</Link>
+              <Link to="/" onClick={logOut}>
+                {user.displayName}(Log out)
+              </Link>
             </li>
           ) : (
             <li className="md:ml-4 pl-4 md:my-0 my-4 hover:text-orange-600 font-semibold text-gray-800">
