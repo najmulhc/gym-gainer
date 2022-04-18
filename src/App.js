@@ -10,6 +10,7 @@ import CheckOut from "./components/Pages/CheckOut/CheckOut";
 import Register from "./components/Pages/Register/Register";
 import RouteProtector from "./components/RouteProtector/RouteProtector";
 import AboutMe from "./components/Pages/AboutMe/AboutMe";
+import ThankYou from "./components/Pages/ThankYou/ThankYou";
 function App() {
   return (
     <div className="App">
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/about" element={<AboutMe/>}></Route>
         <Route path="/blog" element={<Blog/>}></Route>
+        <Route path="/thanks" element={<ThankYou/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="*" element={<NotFound/>}></Route>
       </Routes>

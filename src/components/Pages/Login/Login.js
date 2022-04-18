@@ -1,33 +1,34 @@
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const navigate = useNavigate()
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
+  const navigate = useNavigate();
+   
   const [loginError, setLoginError] = useState("");
   const resetPassword = () => {
-      console.log("reset password link has been sent ");
+    sendPasswordResetEmail(auth, loginEmail)
+    .then(() => {
+       
+    })
   }
-  const login = (e) => { 
-      e.preventDefault();
-      signInWithEmailAndPassword(loginEmail, loginPassword)
-  }
-  if(error){
-     console.log(error.message);
-  }
-  if(user){ 
+  const login = e => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    .then((userCredentials) => {
       navigate('/')
-  }
+    })
+    .catch((err) => {
+      let loginErr = err.message;
+      setLoginError(loginErr)
+    })
+   }
+  
   return (
     <div className="bg-komola h-full w-full">
       <div className="container mx-auto flex items-center justify-center py-8 md:py-20">
@@ -57,6 +58,7 @@ const Login = () => {
           >
             Login
           </button>
+          <small className="text-red-600 block ">{loginError}</small>  
           <small className="text-grey">
             New to Gymgainer?
             <Link to="/register" className="text-komola">
