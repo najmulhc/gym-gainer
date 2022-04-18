@@ -40,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/programming-hero-web-course-4/independent-service-provider-kridi32.git",
+  "author": "kridi32 <kridi32@outlook.com>",
+  "license": "MIT"
 }
